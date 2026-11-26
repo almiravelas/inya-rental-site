@@ -77,6 +77,17 @@ window.INYA_PRODUCTS = [
     booked: [],
     laundering: [],
   },
+  {
+    id: "leonara",
+    category: "dress",
+    name: "Leonara",
+    brand: "Whoopy",
+    size: "M: Length: fits 5'1-5'2ft ; Waist: 72cm; Bust: 80cm",
+    price: "1100 (2 days) · 1150 (3 days)",
+    images: ["images/leonara-1.jpg", "images/leonara-2.jpg"],
+    booked: [],
+    laundering: [],
+  },
 ];
 
 /* Where the "Book your dress" button sends people */
