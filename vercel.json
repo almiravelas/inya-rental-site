@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "proxy": {
     "entrypoint": "proxy.js",
-    "matcher": ["/admin", "/admin.html", "/admin.js", "/admin.css"]
+    "matcher": ["/admin", "/admin.html", "/admin.js", "/admin.css", "/api/:path*"]
   },
   "headers": [
     {

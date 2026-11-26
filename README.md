@@ -11,25 +11,32 @@ A static site for Inya's closet rental, rebuilt from the Canva design. It's plai
 | `app.js` | Collection grid, detail pages, photo carousel, calendar |
 | `products.js` | **Your pieces, prices and booked dates. Edit this one.** |
 | `images/` | Product photos |
+| `admin.html`, `admin.js`, `admin.css` | The admin page at `/admin` |
+| `api/admin.js` | Publishes pieces from the admin page to GitHub |
+| `proxy.js`, `lib/auth.js` | Admin password check |
 
 ## Adding pieces (admin page)
 
-Go to `/admin` on the site (it isn't linked from the public pages). Fill in a piece, add its photos, and click **Add piece**. Add as many as you like, then:
+Go to `/admin` on the site (it isn't linked from the public pages) and sign in. Add photos, fill in the details, and click **Publish**. The piece is live in about a minute.
 
-1. Click **Download products.js** and replace `products.js` in the repo with it.
-2. Click each photo link and save it into `images/`. The names are already filled in.
-3. Commit and push.
+Behind the scenes, the page shrinks photos to 1600px JPEGs, then `api/admin.js` saves them to `images/` and adds the piece to `products.js` in one commit on GitHub, "Add <name> (from admin)". Vercel deploys that commit like any other. To undo a piece, revert that commit on GitHub. Run `git pull` before editing files on your computer, so you have the pieces added from the admin page.
 
-### Admin password
+### One-time setup in Vercel
 
-`/admin` is password protected by `proxy.js`, which Vercel runs on its servers before sending the page. Set the password once in Vercel under **Settings → Environment Variables**:
+In your Vercel project, go to **Settings → Environment Variables** (free on the Hobby plan) and add:
 
-- `ADMIN_PASSWORD`: a long password (12+ characters). Required. Until it's set, `/admin` stays locked for everyone.
-- `ADMIN_USER`: the username. Optional, defaults to `inya`.
+- `ADMIN_PASSWORD`: a long password (12+ characters). Until it's set, `/admin` stays locked for everyone.
+- `ADMIN_USER`: optional username. Defaults to `inya`.
+- `GITHUB_TOKEN`: lets the admin page save to GitHub. To make one:
+  1. On github.com go to **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**.
+  2. Name it `hi-inya-admin` and pick an expiration (up to a year; set a reminder to replace it).
+  3. Under **Repository access**, choose **Only select repositories** and pick `inya-rental-site`.
+  4. Under **Permissions → Repository permissions**, set **Contents** to **Read and write**. Leave everything else as is.
+  5. Generate it, copy it, and paste it into Vercel as `GITHUB_TOKEN`. Don't put it anywhere else.
 
-Redeploy after adding or changing them. Your browser asks for the username and password the first time you open `/admin` and remembers them until you close it.
+Then redeploy. Your browser asks for the username and password the first time you open `/admin`.
 
-The protection only runs on Vercel. When you open the files on your own computer, the admin page isn't locked.
+`proxy.js` checks the password on Vercel's servers before sending anything under `/admin` or `/api`, and `api/admin.js` checks it again. On your own computer nothing is locked and **Publish** won't work, because it only runs on Vercel.
 
 ## Updating pieces and the calendar
 
