@@ -20,7 +20,16 @@ Go to `/admin` on the site (it isn't linked from the public pages). Fill in a pi
 2. Click each photo link and save it into `images/`. The names are already filled in.
 3. Commit and push.
 
-The site has no server, so the admin page can't change the live site on its own, and anyone who finds `/admin` can only make files on their own computer.
+### Admin password
+
+`/admin` is password protected by `proxy.js`, which Vercel runs on its servers before sending the page. Set the password once in Vercel under **Settings → Environment Variables**:
+
+- `ADMIN_PASSWORD`: a long password (12+ characters). Required. Until it's set, `/admin` stays locked for everyone.
+- `ADMIN_USER`: the username. Optional, defaults to `inya`.
+
+Redeploy after adding or changing them. Your browser asks for the username and password the first time you open `/admin` and remembers them until you close it.
+
+The protection only runs on Vercel. When you open the files on your own computer, the admin page isn't locked.
 
 ## Updating pieces and the calendar
 

@@ -163,11 +163,9 @@
 
   function aboutPage() {
     var ig = CONFIG.instagram || "hi.inya";
-    var cover = PRODUCTS[0] && (PRODUCTS[0].cover || PRODUCTS[0].images[0]);
     setTitle("About Inya");
     app.innerHTML =
       '<article class="about">' +
-        (cover ? '<div class="about-photo"><img src="' + esc(cover) + '" alt="A piece from the Hi.Inya collection" /></div>' : "") +
         '<div class="about-text">' +
           '<p class="eyebrow">ABOUT</p>' +
           "<h1>Hi, I'm Inya.</h1>" +
