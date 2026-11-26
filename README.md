@@ -12,9 +12,19 @@ A static site for Inya's closet rental, rebuilt from the Canva design. It's plai
 | `products.js` | **Your pieces, prices and booked dates. Edit this one.** |
 | `images/` | Product photos |
 
+## Adding pieces (admin page)
+
+Go to `/admin` on the site (it isn't linked from the public pages). Fill in a piece, add its photos, and click **Add piece**. Add as many as you like, then:
+
+1. Click **Download products.js** and replace `products.js` in the repo with it.
+2. Click each photo link and save it into `images/`. The names are already filled in.
+3. Commit and push.
+
+The site has no server, so the admin page can't change the live site on its own, and anyone who finds `/admin` can only make files on their own computer.
+
 ## Updating pieces and the calendar
 
-Open `products.js`. Each piece looks like this:
+To edit or remove a piece, or change its dates, open `products.js`. Each piece looks like this:
 
 ```js
 {

@@ -161,6 +161,39 @@
     window.scrollTo(0, 0);
   }
 
+  function aboutPage() {
+    var ig = CONFIG.instagram || "hi.inya";
+    var cover = PRODUCTS[0] && (PRODUCTS[0].cover || PRODUCTS[0].images[0]);
+    setTitle("About Inya");
+    app.innerHTML =
+      '<article class="about">' +
+        (cover ? '<div class="about-photo"><img src="' + esc(cover) + '" alt="A piece from the Hi.Inya collection" /></div>' : "") +
+        '<div class="about-text">' +
+          '<p class="eyebrow">ABOUT</p>' +
+          "<h1>Hi, I'm Inya.</h1>" +
+          "<p>I've always loved clothes that don't go out of style: a dress with a beautiful cut, a top that looks just as right at brunch as it does at dinner. Timeless, classy pieces that are made to be worn, not saved for one perfect day.</p>" +
+          "<p>Over time my closet filled up with pieces like that, and I kept thinking they deserved more than a night or two out. So I started Hi.Inya, to share them with people who would love them as much as I do.</p>" +
+          "<h2>Who it's for</h2>" +
+          "<p>Hi.Inya is for you if you like to look good, and like the feeling of wearing something new for an occasion, without paying full price for a piece you might only wear once. Every dress and top is picked to be elegant, easy to wear and fairly priced for a 2 or 3 day rental.</p>" +
+          "<h2>How it works</h2>" +
+          "<p>Find a piece you love, check its calendar for an open date, and message me to book. I'll take care of the rest.</p>" +
+          '<div class="about-actions">' +
+            '<a class="book" href="#dress">See the collection</a>' +
+            '<a class="about-ig" href="https://instagram.com/' + esc(ig) + '" target="_blank" rel="noopener">@' + esc(ig) + " on Instagram</a>" +
+          "</div>" +
+        "</div>" +
+      "</article>";
+    window.scrollTo(0, 0);
+  }
+
+  function markNav(name) {
+    var links = document.querySelectorAll(".site-nav a");
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].getAttribute("data-nav") === name) links[i].setAttribute("aria-current", "page");
+      else links[i].removeAttribute("aria-current");
+    }
+  }
+
   // ---------- gallery ----------
   function initGallery(root, total) {
     var track = root.querySelector(".track");
@@ -267,6 +300,8 @@
   // Plain hashes (#tops, #item-dahlia, #terms) so links can be shared
   function route() {
     var h = location.hash.replace(/^#\/?/, "");
+    markNav(h === "about" ? "about" : (h === "terms" || h === "privacy") ? "" : "collection");
+    if (h === "about") return aboutPage();
     if (h.indexOf("item-") === 0) {
       var id = h.slice(5);
       var p = PRODUCTS.filter(function (x) { return x.id === id; })[0];

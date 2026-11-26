@@ -1,0 +1,65 @@
+.admin-tag { margin-top: 8px; }
+.admin { padding-bottom: 72px; }
+.admin code { font-size: 13px; background: #efece8; padding: 1px 5px; }
+
+.admin-intro { max-width: 640px; margin-top: 40px; }
+.admin-intro h1 { font-family: var(--serif); font-weight: 400; font-size: 32px; margin: 0 0 10px; }
+.admin-intro p { color: #3c3936; font-size: 14px; margin: 0; }
+
+.admin-grid { margin-top: 30px; }
+@media (min-width: 900px) {
+  .admin-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 48px; align-items: start; }
+  .admin-side { position: sticky; top: 20px; }
+}
+
+.admin-form { display: grid; gap: 14px; }
+.admin-form label { display: grid; gap: 6px; font-size: 12px; font-weight: 600; }
+.admin-form .opt { font-weight: 400; color: var(--muted); }
+.admin-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.admin-form input, .admin-form select, .admin-form textarea {
+  font: inherit; font-size: 14px; font-weight: 400;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 0;
+  width: 100%;
+}
+.admin-form input:focus, .admin-form select:focus, .admin-form textarea:focus {
+  outline: 2px solid var(--ink); outline-offset: -1px;
+}
+.admin-form input[type="file"] { padding: 8px; background: #fbfaf8; }
+.admin-form textarea { resize: vertical; font-family: ui-monospace, Menlo, monospace; font-size: 13px; }
+.admin-form .book { justify-self: start; }
+.form-error { color: #a3261b; font-size: 13px; margin: 0; min-height: 18px; }
+
+.thumbs { display: flex; flex-wrap: wrap; gap: 8px; }
+.thumbs:empty { display: none; }
+.thumbs figure { margin: 0; width: 72px; }
+.thumbs img { width: 72px; height: 90px; object-fit: cover; background: var(--photo); }
+.thumbs figcaption { font-size: 10px; color: var(--muted); margin-top: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.admin-side { margin-top: 36px; }
+@media (min-width: 900px) { .admin-side { margin-top: 0; } }
+.admin-side > .eyebrow { margin: 0 0 10px; }
+.preview { max-width: 230px; margin-bottom: 30px; }
+.preview .card { pointer-events: none; }
+
+.queue { list-style: none; padding: 0; margin: 0 0 24px; border-top: 1px solid var(--line); }
+.queue:empty::before { content: "Nothing yet. Pieces you add show up here."; display: block; padding: 12px 0; font-size: 13px; color: var(--muted); }
+.queue li, .existing-list li {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 13px;
+}
+.queue li span, .existing-list li span { color: var(--muted); font-size: 12px; }
+.link-btn { background: none; border: 0; padding: 0; font-size: 12px; text-decoration: underline; cursor: pointer; color: var(--muted); }
+.link-btn:hover { color: var(--ink); }
+
+.export ol { padding-left: 18px; margin: 0; font-size: 13px; color: #3c3936; }
+.export li { margin-bottom: 14px; }
+.export .book { margin: 0 0 6px; }
+.dl-photos { list-style: none; padding: 0; margin: 6px 0 0; }
+.dl-photos li { margin: 0 0 4px; }
+
+.existing { margin-top: 56px; max-width: 640px; }
+.existing .eyebrow { margin-bottom: 10px; }
+.existing-list { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }

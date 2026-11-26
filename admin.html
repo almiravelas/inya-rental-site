@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Add pieces · Hi.Inya admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="wordmark">HI.INYA</a>
+    <p class="eyebrow admin-tag">Admin</p>
+  </header>
+
+  <main class="wrap admin">
+    <section class="admin-intro">
+      <h1>Add a piece</h1>
+      <p>Fill in the form and add as many pieces as you like. When you're done, download the new <code>products.js</code> and the photos, put them in the repo, then commit and push. Nothing here changes the live site until you do.</p>
+    </section>
+
+    <div class="admin-grid">
+      <form id="piece-form" class="admin-form" novalidate>
+        <label>Name
+          <input name="name" required placeholder="The Dahlia Contrast Godet Maxi" />
+        </label>
+        <label>Short name <span class="opt">optional, for the collection card</span>
+          <input name="shortName" placeholder="Dahlia Maxi" />
+        </label>
+        <div class="row">
+          <label>Category
+            <select name="category">
+              <option value="dress">Dress</option>
+              <option value="top">Top</option>
+            </select>
+          </label>
+          <label>Link id <span class="opt">used in the URL</span>
+            <input name="id" required pattern="[a-z0-9-]+" placeholder="dahlia" />
+          </label>
+        </div>
+        <label>Brand
+          <input name="brand" placeholder="Ever New" />
+        </label>
+        <label>Size
+          <input name="size" placeholder="S / EU 36 / UK 8 / US 4" />
+        </label>
+        <div class="row">
+          <label>2-day price
+            <input name="price2" inputmode="numeric" placeholder="500" />
+          </label>
+          <label>3-day price
+            <input name="price3" inputmode="numeric" placeholder="550" />
+          </label>
+        </div>
+        <label>Photos <span class="opt">the first one is the cover; portrait 4:5 looks best</span>
+          <input name="photos" type="file" accept="image/*" multiple />
+        </label>
+        <div id="thumbs" class="thumbs"></div>
+        <label>Booked dates <span class="opt">optional, one per line: 2026-12-05 or 2026-12-05 to 2026-12-07</span>
+          <textarea name="booked" rows="2"></textarea>
+        </label>
+        <label>Laundering dates <span class="opt">optional, same format</span>
+          <textarea name="laundering" rows="2"></textarea>
+        </label>
+        <p id="form-error" class="form-error" role="alert"></p>
+        <button type="submit" class="book">Add piece</button>
+      </form>
+
+      <aside class="admin-side">
+        <p class="eyebrow">Card preview</p>
+        <div id="preview" class="preview"></div>
+
+        <p class="eyebrow">Ready to add <span id="queue-count"></span></p>
+        <ul id="queue" class="queue"></ul>
+
+        <div id="export" class="export" hidden>
+          <p class="eyebrow">Download</p>
+          <ol>
+            <li><button type="button" id="dl-products" class="book">Download products.js</button><br />
+              Replace <code>products.js</code> in the repo with it.</li>
+            <li>Save each photo into the <code>images/</code> folder:
+              <ul id="dl-photos" class="dl-photos"></ul></li>
+            <li>Commit and push. Vercel updates the site in about a minute.</li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+
+    <section class="existing">
+      <p class="eyebrow">Already on the site</p>
+      <ul id="existing" class="existing-list"></ul>
+    </section>
+  </main>
+
+  <script src="products.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
