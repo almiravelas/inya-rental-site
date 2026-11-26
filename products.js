@@ -88,6 +88,17 @@ window.INYA_PRODUCTS = [
     booked: [],
     laundering: [],
   },
+  {
+    id: "lexa",
+    category: "dress",
+    name: "Lexa",
+    brand: "Whoopy",
+    size: "M: Length: 5-5'2ft ; Waist: 68cm; Bust: 78cm",
+    price: "1100 (2 days) · 1150 (3 days)",
+    images: ["images/lexa-1.jpg", "images/lexa-2.jpg", "images/lexa-3.jpg"],
+    booked: [],
+    laundering: [],
+  },
 ];
 
 /* Where the "Book your dress" button sends people */
